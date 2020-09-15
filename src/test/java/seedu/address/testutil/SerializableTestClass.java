@@ -28,6 +28,12 @@ public class SerializableTestClass {
     private List<LocalDateTime> listOfLocalDateTimes;
     private HashMap<Integer, String> mapOfIntegerToString;
 
+    public void setTestValues() {
+        name = getNameTestValue();
+        listOfLocalDateTimes = getListTestValues();
+        mapOfIntegerToString = getHashMapTestValues();
+    }
+
     public static String getNameTestValue() {
         return NAME_TEST_VALUE;
     }
@@ -50,12 +56,6 @@ public class SerializableTestClass {
         mapOfIntegerToString.put(3, "Three");
 
         return mapOfIntegerToString;
-    }
-
-    public void setTestValues() {
-        name = getNameTestValue();
-        listOfLocalDateTimes = getListTestValues();
-        mapOfIntegerToString = getHashMapTestValues();
     }
 
     public String getName() {

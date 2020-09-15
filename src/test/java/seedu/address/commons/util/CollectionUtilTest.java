@@ -44,6 +44,18 @@ public class CollectionUtilTest {
         assertNullPointerExceptionNotThrown(containingNull, new Object());
     }
 
+    private void assertNullPointerExceptionNotThrown(Object... objects) {
+        requireAllNonNull(objects);
+    }
+
+    /**
+     * Asserts that {@code CollectionUtil#requireAllNonNull(Object...)} throw {@code NullPointerException}
+     * if {@code objects} or any element of {@code objects} is null.
+     */
+    private void assertNullPointerExceptionThrown(Object... objects) {
+        assertThrows(NullPointerException.class, () -> requireAllNonNull(objects));
+    }
+
     @Test
     public void requireAllNonNullCollection() {
         // lists containing nulls in the front
@@ -73,23 +85,6 @@ public class CollectionUtilTest {
         assertNullPointerExceptionNotThrown(Arrays.asList(containingNull, new Object()));
     }
 
-    @Test
-    public void isAnyNonNull() {
-        assertFalse(CollectionUtil.isAnyNonNull());
-        assertFalse(CollectionUtil.isAnyNonNull((Object) null));
-        assertFalse(CollectionUtil.isAnyNonNull((Object[]) null));
-        assertTrue(CollectionUtil.isAnyNonNull(new Object()));
-        assertTrue(CollectionUtil.isAnyNonNull(new Object(), null));
-    }
-
-    /**
-     * Asserts that {@code CollectionUtil#requireAllNonNull(Object...)} throw {@code NullPointerException}
-     * if {@code objects} or any element of {@code objects} is null.
-     */
-    private void assertNullPointerExceptionThrown(Object... objects) {
-        assertThrows(NullPointerException.class, () -> requireAllNonNull(objects));
-    }
-
     /**
      * Asserts that {@code CollectionUtil#requireAllNonNull(Collection<?>)} throw {@code NullPointerException}
      * if {@code collection} or any element of {@code collection} is null.
@@ -98,11 +93,16 @@ public class CollectionUtilTest {
         assertThrows(NullPointerException.class, () -> requireAllNonNull(collection));
     }
 
-    private void assertNullPointerExceptionNotThrown(Object... objects) {
-        requireAllNonNull(objects);
-    }
-
     private void assertNullPointerExceptionNotThrown(Collection<?> collection) {
         requireAllNonNull(collection);
+    }
+
+    @Test
+    public void isAnyNonNull() {
+        assertFalse(CollectionUtil.isAnyNonNull());
+        assertFalse(CollectionUtil.isAnyNonNull((Object) null));
+        assertFalse(CollectionUtil.isAnyNonNull((Object[]) null));
+        assertTrue(CollectionUtil.isAnyNonNull(new Object()));
+        assertTrue(CollectionUtil.isAnyNonNull(new Object(), null));
     }
 }

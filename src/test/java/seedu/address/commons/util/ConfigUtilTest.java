@@ -28,6 +28,17 @@ public class ConfigUtilTest {
         assertThrows(NullPointerException.class, () -> read(null));
     }
 
+    private Optional<Config> read(String configFileInTestDataFolder) throws DataConversionException {
+        Path configFilePath = addToTestDataPathIfNotNull(configFileInTestDataFolder);
+        return ConfigUtil.readConfig(configFilePath);
+    }
+
+    private Path addToTestDataPathIfNotNull(String configFileInTestDataFolder) {
+        return configFileInTestDataFolder != null
+                ? TEST_DATA_FOLDER.resolve(configFileInTestDataFolder)
+                : null;
+    }
+
     @Test
     public void read_missingFile_emptyResult() throws DataConversionException {
         assertFalse(read("NonExistentFile.json").isPresent());
@@ -47,6 +58,13 @@ public class ConfigUtilTest {
         assertEquals(expected, actual);
     }
 
+    private Config getTypicalConfig() {
+        Config config = new Config();
+        config.setLogLevel(Level.INFO);
+        config.setUserPrefsFilePath(Paths.get("preferences.json"));
+        return config;
+    }
+
     @Test
     public void read_valuesMissingFromFile_defaultValuesUsed() throws DataConversionException {
         Config actual = read("EmptyConfig.json").get();
@@ -61,21 +79,14 @@ public class ConfigUtilTest {
         assertEquals(expected, actual);
     }
 
-    private Config getTypicalConfig() {
-        Config config = new Config();
-        config.setLogLevel(Level.INFO);
-        config.setUserPrefsFilePath(Paths.get("preferences.json"));
-        return config;
-    }
-
-    private Optional<Config> read(String configFileInTestDataFolder) throws DataConversionException {
-        Path configFilePath = addToTestDataPathIfNotNull(configFileInTestDataFolder);
-        return ConfigUtil.readConfig(configFilePath);
-    }
-
     @Test
     public void save_nullConfig_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> save(null, "SomeFile.json"));
+    }
+
+    private void save(Config config, String configFileInTestDataFolder) throws IOException {
+        Path configFilePath = addToTestDataPathIfNotNull(configFileInTestDataFolder);
+        ConfigUtil.saveConfig(config, configFilePath);
     }
 
     @Test
@@ -99,17 +110,6 @@ public class ConfigUtilTest {
         ConfigUtil.saveConfig(original, configFilePath);
         readBack = ConfigUtil.readConfig(configFilePath).get();
         assertEquals(original, readBack);
-    }
-
-    private void save(Config config, String configFileInTestDataFolder) throws IOException {
-        Path configFilePath = addToTestDataPathIfNotNull(configFileInTestDataFolder);
-        ConfigUtil.saveConfig(config, configFilePath);
-    }
-
-    private Path addToTestDataPathIfNotNull(String configFileInTestDataFolder) {
-        return configFileInTestDataFolder != null
-                                  ? TEST_DATA_FOLDER.resolve(configFileInTestDataFolder)
-                                  : null;
     }
 
 

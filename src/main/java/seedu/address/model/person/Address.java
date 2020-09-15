@@ -9,7 +9,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Address {
 
-    public static final String MESSAGE_CONSTRAINTS = "Addresses can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Addresses can take any values, and it should not be "
+            + "blank";
 
     /*
      * The first character of the address must not be a whitespace,
@@ -38,8 +39,8 @@ public class Address {
     }
 
     @Override
-    public String toString() {
-        return value;
+    public int hashCode() {
+        return value.hashCode();
     }
 
     @Override
@@ -50,8 +51,8 @@ public class Address {
     }
 
     @Override
-    public int hashCode() {
-        return value.hashCode();
+    public String toString() {
+        return value;
     }
 
 }

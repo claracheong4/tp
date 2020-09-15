@@ -15,9 +15,15 @@ public class VersionTest {
         verifyVersionParsedCorrectly("V100.100.100ea", 100, 100, 100, true);
     }
 
+    private void verifyVersionParsedCorrectly(String versionString,
+                                              int major, int minor, int patch, boolean isEarlyAccess) {
+        assertEquals(new Version(major, minor, patch, isEarlyAccess), Version.fromString(versionString));
+    }
+
     @Test
     public void versionParsing_wrongVersionString_throwIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, () -> Version.fromString("This is not a version string"));
+        assertThrows(IllegalArgumentException.class, ()
+                -> Version.fromString("This is not a version string"));
     }
 
     @Test
@@ -126,10 +132,5 @@ public class VersionTest {
         one = new Version(100, 191, 275, true);
         another = new Version(100, 191, 275, true);
         assertTrue(one.equals(another));
-    }
-
-    private void verifyVersionParsedCorrectly(String versionString,
-            int major, int minor, int patch, boolean isEarlyAccess) {
-        assertEquals(new Version(major, minor, patch, isEarlyAccess), Version.fromString(versionString));
     }
 }

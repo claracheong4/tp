@@ -12,17 +12,17 @@ import java.util.logging.SimpleFormatter;
  * Configures and manages loggers and handlers, including their logging level
  * Named {@link Logger}s can be obtained from this class<br>
  * These loggers have been configured to output messages to the console and a {@code .log} file by default,
- *   at the {@code INFO} level. A new {@code .log} file with a new numbering will be created after the log
- *   file reaches 5MB big, up to a maximum of 5 files.<br>
+ * at the {@code INFO} level. A new {@code .log} file with a new numbering will be created after the log
+ * file reaches 5MB big, up to a maximum of 5 files.<br>
  */
 public class LogsCenter {
     private static final int MAX_FILE_COUNT = 5;
     private static final int MAX_FILE_SIZE_IN_BYTES = (int) (Math.pow(2, 20) * 5); // 5MB
     private static final String LOG_FILE = "addressbook.log";
     private static Level currentLogLevel = Level.INFO;
-    private static final Logger logger = LogsCenter.getLogger(LogsCenter.class);
     private static FileHandler fileHandler;
     private static ConsoleHandler consoleHandler;
+    private static final Logger logger = LogsCenter.getLogger(LogsCenter.class);
 
     /**
      * Initializes with a custom log level (specified in the {@code config} object)
@@ -33,6 +33,16 @@ public class LogsCenter {
     public static void init(Config config) {
         currentLogLevel = config.getLogLevel();
         logger.info("currentLogLevel: " + currentLogLevel);
+    }
+
+    /**
+     * Creates a Logger for the given class name.
+     */
+    public static <T> Logger getLogger(Class<T> clazz) {
+        if (clazz == null) {
+            return Logger.getLogger("");
+        }
+        return getLogger(clazz.getSimpleName());
     }
 
     /**
@@ -50,13 +60,11 @@ public class LogsCenter {
     }
 
     /**
-     * Creates a Logger for the given class name.
+     * Remove all the handlers from {@code logger}.
      */
-    public static <T> Logger getLogger(Class<T> clazz) {
-        if (clazz == null) {
-            return Logger.getLogger("");
-        }
-        return getLogger(clazz.getSimpleName());
+    private static void removeHandlers(Logger logger) {
+        Arrays.stream(logger.getHandlers())
+                .forEach(logger::removeHandler);
     }
 
     /**
@@ -68,14 +76,6 @@ public class LogsCenter {
             consoleHandler = createConsoleHandler();
         }
         logger.addHandler(consoleHandler);
-    }
-
-    /**
-     * Remove all the handlers from {@code logger}.
-     */
-    private static void removeHandlers(Logger logger) {
-        Arrays.stream(logger.getHandlers())
-                .forEach(logger::removeHandler);
     }
 
     /**
@@ -93,8 +93,15 @@ public class LogsCenter {
         }
     }
 
+    private static ConsoleHandler createConsoleHandler() {
+        ConsoleHandler consoleHandler = new ConsoleHandler();
+        consoleHandler.setLevel(currentLogLevel);
+        return consoleHandler;
+    }
+
     /**
      * Creates a {@code FileHandler} for the log file.
+     *
      * @throws IOException if there are problems opening the file.
      */
     private static FileHandler createFileHandler() throws IOException {
@@ -102,11 +109,5 @@ public class LogsCenter {
         fileHandler.setFormatter(new SimpleFormatter());
         fileHandler.setLevel(currentLogLevel);
         return fileHandler;
-    }
-
-    private static ConsoleHandler createConsoleHandler() {
-        ConsoleHandler consoleHandler = new ConsoleHandler();
-        consoleHandler.setLevel(currentLogLevel);
-        return consoleHandler;
     }
 }
