@@ -61,8 +61,8 @@ public class FindCommandParserTest {
         // prefixes (other than /match) missing
         assertParseFailure(parser, FIND_TYPE + "all", COMMAND_USAGE_ERROR, model);
 
-        System.out.println(String.format("%s%s %s%s %s", FIND_TYPE, "any", PREFIX_COMPLETION_STATUS,
-                CompletionStatusPredicate.COMPLETED_KEYWORD, CompletionStatusPredicate.INCOMPLETE_KEYWORD));
+        System.out.printf("%s%s %s%s %s%n", FIND_TYPE, "any", PREFIX_COMPLETION_STATUS,
+                CompletionStatusPredicate.COMPLETED_KEYWORD, CompletionStatusPredicate.INCOMPLETE_KEYWORD);
 
         // > 1 keyword for completion status
         assertParseFailure(parser, String.format("%s%s %s%s %s", FIND_TYPE, "any", PREFIX_COMPLETION_STATUS,

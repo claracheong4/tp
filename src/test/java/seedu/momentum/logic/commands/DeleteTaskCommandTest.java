@@ -27,7 +27,7 @@ import seedu.momentum.testutil.ProjectBuilder;
  */
 public class DeleteTaskCommandTest {
 
-    private Model model = new ModelManager(getTypicalProjectBook(), new UserPrefs());
+    private final Model model = new ModelManager(getTypicalProjectBook(), new UserPrefs());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {

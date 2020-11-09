@@ -39,7 +39,7 @@ public class TrackedItemListPanel extends UiPart<Region> {
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Project} using a {@code ProjectCard}.
      */
-    private class TrackedItemViewCell extends ListCell<TrackedItem> {
+    private static class TrackedItemViewCell extends ListCell<TrackedItem> {
         @Override
         protected void updateItem(TrackedItem trackedItem, boolean empty) {
             super.updateItem(trackedItem, empty);

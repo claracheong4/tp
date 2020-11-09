@@ -9,7 +9,7 @@ import static seedu.momentum.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -54,7 +54,7 @@ public class AddProjectCommandTest {
 
         assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, TEXT_PROJECT, validProject),
                 commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validProject), modelStub.projectsAdded);
+        assertEquals(Collections.singletonList(validProject), modelStub.projectsAdded);
     }
 
     @Test
@@ -93,7 +93,7 @@ public class AddProjectCommandTest {
     /**
      * A default model stub that have all of the methods failing.
      */
-    private class ModelStub implements Model {
+    private static class ModelStub implements Model {
         @Override
         public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
             throw new AssertionError("This method should not be called.");
@@ -319,7 +319,7 @@ public class AddProjectCommandTest {
     /**
      * A Model stub that contains a single project.
      */
-    private class ModelStubWithProject extends ModelStub {
+    private static class ModelStubWithProject extends ModelStub {
         private final Project project;
 
         ModelStubWithProject(Project project) {
@@ -337,7 +337,7 @@ public class AddProjectCommandTest {
     /**
      * A Model stub that always accept the project being added.
      */
-    private class ModelStubAcceptingProjectAdded extends ModelStub {
+    private static class ModelStubAcceptingProjectAdded extends ModelStub {
         public final ArrayList<TrackedItem> projectsAdded = new ArrayList<>();
 
         @Override
@@ -362,12 +362,12 @@ public class AddProjectCommandTest {
      * A Model stub that resets {@code ModelManager}.
      */
     private class ModelStubSetModelManager extends ModelStubAcceptingProjectAdded {
-        private ViewMode viewMode = ViewMode.PROJECTS;
-        private Project currentProject = null;
-        private Predicate<TrackedItem> currentPredicate = PREDICATE_SHOW_ALL_TRACKED_ITEMS;
-        private Comparator<TrackedItem> currentComparator = null;
-        private boolean isTagsVisible = true;
-        private UserPrefs userPrefs = new UserPrefs();
+        private final ViewMode viewMode = ViewMode.PROJECTS;
+        private final Project currentProject = null;
+        private final Predicate<TrackedItem> currentPredicate = PREDICATE_SHOW_ALL_TRACKED_ITEMS;
+        private final Comparator<TrackedItem> currentComparator = null;
+        private final boolean isTagsVisible = true;
+        private final UserPrefs userPrefs = new UserPrefs();
         private final VersionedProjectBook versionedProjectBook = new VersionedProjectBook(new ProjectBook(),
                 viewMode, currentProject, currentPredicate, currentComparator, isTagsVisible, userPrefs);
 

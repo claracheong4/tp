@@ -20,7 +20,7 @@ import seedu.momentum.testutil.TaskBuilder;
 
 public class AddTaskCommandTest {
 
-    private Model model = new ModelManager(getTypicalProjectBook(), new UserPrefs());
+    private final Model model = new ModelManager(getTypicalProjectBook(), new UserPrefs());
 
     @Test
     public void constructor_nullTask_throwsNullPointerException() {

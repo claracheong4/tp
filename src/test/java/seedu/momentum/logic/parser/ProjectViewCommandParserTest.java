@@ -16,8 +16,8 @@ import seedu.momentum.model.UserPrefs;
 
 class ProjectViewCommandParserTest {
 
-    private ProjectViewCommandParser parser = new ProjectViewCommandParser();
-    private Model model = new ModelManager(getTypicalProjectBook(), new UserPrefs());
+    private final ProjectViewCommandParser parser = new ProjectViewCommandParser();
+    private final Model model = new ModelManager(getTypicalProjectBook(), new UserPrefs());
 
     @Test
     public void parse_validArgs_returnsDeleteCommand() {

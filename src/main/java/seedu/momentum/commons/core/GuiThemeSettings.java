@@ -56,8 +56,6 @@ public class GuiThemeSettings implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Theme : " + theme + "\n");
-        return sb.toString();
+        return "Theme : " + theme + "\n";
     }
 }

@@ -47,8 +47,8 @@ import seedu.momentum.model.tag.Tag;
 import seedu.momentum.testutil.ProjectBuilder;
 
 public class AddCommandParserTest {
-    private AddCommandParser parser = new AddCommandParser();
-    private Model model = new ModelManager(getTypicalProjectBook(), new UserPrefs());
+    private final AddCommandParser parser = new AddCommandParser();
+    private final Model model = new ModelManager(getTypicalProjectBook(), new UserPrefs());
 
     @Test
     public void parse_allFieldsPresent_success() {

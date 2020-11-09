@@ -74,7 +74,7 @@ public class ParserUtilTest {
 
     @Test
     public void parseName_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseName((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseName(null));
     }
 
     @Test
@@ -162,7 +162,7 @@ public class ParserUtilTest {
 
     @Test
     public void parseDescription_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseDescription((String) null));
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseDescription(null));
     }
 
     @Test

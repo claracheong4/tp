@@ -19,7 +19,7 @@ import seedu.momentum.model.UserPrefs;
 import seedu.momentum.model.project.Project;
 
 class StopCommandParserTest {
-    private StopCommandParser parser = new StopCommandParser();
+    private final StopCommandParser parser = new StopCommandParser();
     private Model model = new ModelManager(getTypicalProjectBook(), new UserPrefs());
 
     @BeforeEach

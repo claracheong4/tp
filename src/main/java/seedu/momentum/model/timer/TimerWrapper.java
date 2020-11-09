@@ -12,9 +12,9 @@ import seedu.momentum.commons.core.DateTimeWrapper;
  * Guarantees: immutable.
  */
 public class TimerWrapper {
-    private DateTimeWrapper startDateTime;
-    private DateTimeWrapper stopDateTime;
-    private boolean isRunning;
+    private final DateTimeWrapper startDateTime;
+    private final DateTimeWrapper stopDateTime;
+    private final boolean isRunning;
 
     /**
      * Constructs a timer with default settings.

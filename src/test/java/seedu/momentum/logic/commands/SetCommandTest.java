@@ -22,8 +22,8 @@ import seedu.momentum.testutil.SettingsToChangeBuilder;
 
 public class SetCommandTest {
 
-    private Model model = new ModelManager(getTypicalProjectBook(), new UserPrefs());
-    private Model expectedModel = new ModelManager(getTypicalProjectBook(), new UserPrefs());
+    private final Model model = new ModelManager(getTypicalProjectBook(), new UserPrefs());
+    private final Model expectedModel = new ModelManager(getTypicalProjectBook(), new UserPrefs());
 
     @Test
     public void equals() {

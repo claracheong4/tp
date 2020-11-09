@@ -19,7 +19,7 @@ import seedu.momentum.model.UserPrefs;
 import seedu.momentum.model.project.Project;
 
 class StartCommandParserTest {
-    private StartCommandParser parser = new StartCommandParser();
+    private final StartCommandParser parser = new StartCommandParser();
     private Model model = new ModelManager(getTypicalProjectBook(), new UserPrefs());
 
     @BeforeEach

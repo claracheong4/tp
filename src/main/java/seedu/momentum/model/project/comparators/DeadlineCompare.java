@@ -21,7 +21,7 @@ public class DeadlineCompare implements Comparator<HashMap<String, Object>> {
      */
     public int compare(HashMap<String, Object> p1, HashMap<String, Object> p2) {
         Deadline p1Deadline = (Deadline) p1.get("deadline");
-        Deadline p2Deadline = (Deadline) p2.get("deadline");;
+        Deadline p2Deadline = (Deadline) p2.get("deadline");
 
         Name p1Name = (Name) p1.get("name");
         Name p2Name = (Name) p2.get("name");

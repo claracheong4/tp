@@ -21,7 +21,7 @@ import seedu.momentum.model.timer.WorkDuration;
  */
 public class Project extends TrackedItem implements UniqueItem<TrackedItem> {
 
-    private UniqueItemList<TrackedItem> taskList;
+    private final UniqueItemList<TrackedItem> taskList;
 
     /**
      * Constructs a {@code Project}.

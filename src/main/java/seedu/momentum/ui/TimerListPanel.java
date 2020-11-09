@@ -31,7 +31,7 @@ public class TimerListPanel extends UiPart<Region> {
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code TimerWrapper} using a {@code TimerCard}.
      */
-    private class TimerListViewCell extends ListCell<TrackedItem> {
+    private static class TimerListViewCell extends ListCell<TrackedItem> {
         @Override
         protected void updateItem(TrackedItem trackedItem, boolean empty) {
             super.updateItem(trackedItem, empty);

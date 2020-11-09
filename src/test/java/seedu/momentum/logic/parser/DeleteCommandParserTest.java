@@ -28,7 +28,7 @@ import seedu.momentum.model.project.Project;
  */
 public class DeleteCommandParserTest {
 
-    private DeleteCommandParser parser = new DeleteCommandParser();
+    private final DeleteCommandParser parser = new DeleteCommandParser();
     private Model model = new ModelManager(getTypicalProjectBook(), new UserPrefs());
 
     @BeforeEach

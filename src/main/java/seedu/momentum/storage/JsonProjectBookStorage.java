@@ -21,7 +21,7 @@ public class JsonProjectBookStorage implements ProjectBookStorage {
 
     private static final Logger LOGGER = LogsCenter.getLogger(JsonProjectBookStorage.class);
 
-    private Path filePath;
+    private final Path filePath;
 
     public JsonProjectBookStorage(Path filePath) {
         this.filePath = filePath;
@@ -47,7 +47,7 @@ public class JsonProjectBookStorage implements ProjectBookStorage {
 
         Optional<JsonSerializableProjectBook> jsonProjectBook = JsonUtil.readJsonFile(
                 filePath, JsonSerializableProjectBook.class);
-        if (!jsonProjectBook.isPresent()) {
+        if (jsonProjectBook.isEmpty()) {
             return Optional.empty();
         }
 

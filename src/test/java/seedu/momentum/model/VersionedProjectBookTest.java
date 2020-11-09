@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
@@ -30,7 +30,7 @@ public class VersionedProjectBookTest {
     private static final ViewMode AFTER_VIEWMODE = ViewMode.PROJECTS;
     private static final Predicate<TrackedItem> INIT_PREDICATE = Model.PREDICATE_SHOW_ALL_TRACKED_ITEMS;
     private static final Predicate<TrackedItem> AFTER_PREDICATE =
-            new CompletionStatusPredicate(FindType.ALL, Arrays.asList("incomplete"));
+            new CompletionStatusPredicate(FindType.ALL, Collections.singletonList("incomplete"));
     private static final Comparator<TrackedItem> INIT_COMPARE = new NameCompare();
     private static final Comparator<TrackedItem> AFTER_COMPARE = new CreatedDateCompare();
     private static final boolean INIT_TAGS_VISIBLE = true;

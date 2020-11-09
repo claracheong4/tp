@@ -12,6 +12,7 @@ import static seedu.momentum.testutil.TypicalProjects.getTypicalProjectBook;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -143,7 +144,8 @@ public class ModelManagerTest {
         // go to home view
         modelManager.viewProjects();
         modelManager.updateOrder(SortType.CREATED, true);
-        modelManager.updatePredicate(new CompletionStatusPredicate(FindType.ALL, Arrays.asList("incomplete")));
+        modelManager.updatePredicate(
+                new CompletionStatusPredicate(FindType.ALL, Collections.singletonList("incomplete")));
         modelManager.commitToHistory();
 
         // undo home view command
@@ -167,7 +169,8 @@ public class ModelManagerTest {
         // go to home view
         modelManager.viewProjects();
         modelManager.updateOrder(SortType.CREATED, true);
-        Predicate<TrackedItem> newPredicate = new CompletionStatusPredicate(FindType.ALL, Arrays.asList("incomplete"));
+        Predicate<TrackedItem> newPredicate = new CompletionStatusPredicate(FindType.ALL, Collections.singletonList(
+                "incomplete"));
         modelManager.updatePredicate(newPredicate);
         List<TrackedItem> initialDisplayList = modelManager.getDisplayList();
         modelManager.commitToHistory();

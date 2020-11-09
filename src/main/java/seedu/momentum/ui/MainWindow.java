@@ -36,8 +36,8 @@ public class MainWindow extends UiPart<Stage> {
 
     private Theme theme;
 
-    private Stage primaryStage;
-    private Logic logic;
+    private final Stage primaryStage;
+    private final Logic logic;
 
     // Independent Ui parts residing in this Ui container
     private CommandBox commandBox;
@@ -47,7 +47,7 @@ public class MainWindow extends UiPart<Stage> {
     private TagsDisplay tagsDisplay;
     private TimerListPanel timerListPanel;
     private StatListPanel statListPanel;
-    private HelpWindow helpWindow;
+    private final HelpWindow helpWindow;
     private BottomBar bottomBar;
 
     @FXML

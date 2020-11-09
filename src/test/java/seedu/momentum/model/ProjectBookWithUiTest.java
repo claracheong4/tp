@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.function.Predicate;
 
@@ -125,7 +125,8 @@ public class ProjectBookWithUiTest {
 
         // different predicate -> returns false
         Predicate<TrackedItem> completePredicate =
-            new CompletionStatusPredicate(FindType.ALL, Arrays.asList(CompletionStatusPredicate.INCOMPLETE_KEYWORD));
+            new CompletionStatusPredicate(FindType.ALL,
+                    Collections.singletonList(CompletionStatusPredicate.INCOMPLETE_KEYWORD));
         differentProjectbookWithUi = new ProjectBookWithUi(new ProjectBook(), ViewMode.TASKS,
                 otherProject, completePredicate, NAME_COMPARE, true, USER_PREFS);
         assertFalse(PROJECT_BOOK_WITH_UI.equals(differentProjectbookWithUi));

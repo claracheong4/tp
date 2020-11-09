@@ -37,7 +37,7 @@ public class SortCommandParserTest {
             new SortCommand(SortType.NULL, true, true, false);
 
     private final SortCommandParser parser = new SortCommandParser();
-    private Model model = new ModelManager(getTypicalProjectBook(), new UserPrefs());
+    private final Model model = new ModelManager(getTypicalProjectBook(), new UserPrefs());
 
     @Test
     public void parse_emptyArg_returnsDefaultSortCommand() {

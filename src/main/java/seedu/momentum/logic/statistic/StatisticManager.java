@@ -20,13 +20,13 @@ import seedu.momentum.model.Model;
 public class StatisticManager implements StatisticGenerator {
     private static final Logger LOGGER = LogsCenter.getLogger(StatisticManager.class);
 
-    private Model model;
+    private final Model model;
 
     // Statistics being tracked by the app
     private Statistic totalTimePerProjectStatistic;
 
     // Maintain an array of the above statistics for easy iteration
-    private Statistic[] statistics;
+    private final Statistic[] statistics;
 
     /**
      * Constructs a {@code StatisticManager} that tracks statistics form the specified model.

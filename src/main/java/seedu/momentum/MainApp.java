@@ -92,12 +92,12 @@ public class MainApp extends Application {
         ReadOnlyProjectBook initialData;
         try {
             projectBookOptional = storage.readProjectBook();
-            if (!projectBookOptional.isPresent()) {
+            if (projectBookOptional.isEmpty()) {
                 LOGGER.info("Data file not found. Will be starting with a sample ProjectBook");
             }
 
             Optional<ReadOnlyProjectBook> defaultProjectBookOptional = getDefaultData();
-            if (!projectBookOptional.isPresent()) {
+            if (projectBookOptional.isEmpty()) {
                 LOGGER.info("Default data file not found. Will start with bare bones sample data");
             }
 
@@ -117,7 +117,7 @@ public class MainApp extends Application {
     }
 
     private Optional<ReadOnlyProjectBook> getDefaultData() throws IOException, DataConversionException {
-        File file = null;
+        File file;
         String resource = "/data/defaultData.json";
         URL res = getClass().getResource(resource);
         if (res.getProtocol().equals("jar")) {

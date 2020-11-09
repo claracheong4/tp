@@ -35,7 +35,7 @@ public abstract class AddCommand extends Command {
     public static final String MESSAGE_SUCCESS = "New %1$s added: %2$s";
     public static final String MESSAGE_DUPLICATE_ENTRY = "This %s already exists in the project book";
 
-    protected Project project;
+    protected final Project project;
 
     /**
      * Creates an AddCommand to add the specified {@code Project}.

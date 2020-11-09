@@ -39,7 +39,7 @@ import seedu.momentum.testutil.TypicalTimes;
  */
 public class EditProjectCommandTest {
 
-    private Model model = new ModelManager(getTypicalProjectBook(), new UserPrefs());
+    private final Model model = new ModelManager(getTypicalProjectBook(), new UserPrefs());
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {

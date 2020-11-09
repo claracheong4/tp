@@ -10,7 +10,7 @@ import seedu.momentum.logic.commands.SetCommand;
  */
 public class SettingsToChangeBuilder {
 
-    private SetCommand.SettingsToChange settingsToChange;
+    private final SetCommand.SettingsToChange settingsToChange;
 
     public SettingsToChangeBuilder() {
         settingsToChange = new SetCommand.SettingsToChange();

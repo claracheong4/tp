@@ -14,8 +14,8 @@ import javafx.scene.text.TextAlignment;
 public class ReminderDisplay extends UiPart<Region> {
     private static final String FXML = "ReminderDisplay.fxml";
 
-    private boolean isEmpty;
-    private String reminderStr;
+    private final boolean isEmpty;
+    private final String reminderStr;
 
     @FXML
     private FlowPane reminderPane;

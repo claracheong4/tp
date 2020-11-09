@@ -5,7 +5,7 @@ import seedu.momentum.logic.commands.SortCommand;
 import seedu.momentum.model.project.comparators.SortType;
 
 /**
- * Contains helper {@SortCommand} for testing {@code SortCommand} methods.
+ * Contains helper {@SortCommandUtil} for testing {@code SortCommand} methods.
  */
 public class SortCommandUtil {
 

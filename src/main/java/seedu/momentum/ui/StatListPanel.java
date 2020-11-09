@@ -60,7 +60,7 @@ public class StatListPanel extends UiPart<Region> {
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code StatisticEntry} using a {@code StatisticCard}.
      */
-    private class StatListViewCell extends ListCell<StatisticEntry> {
+    private static class StatListViewCell extends ListCell<StatisticEntry> {
         @Override
         protected void updateItem(StatisticEntry statisticEntry, boolean empty) {
             super.updateItem(statisticEntry, empty);

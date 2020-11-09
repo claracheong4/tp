@@ -20,7 +20,7 @@ import seedu.momentum.model.tag.Tag;
  */
 public class EditTrackedItemDescriptorBuilder {
 
-    private EditCommand.EditTrackedItemDescriptor descriptor;
+    private final EditCommand.EditTrackedItemDescriptor descriptor;
 
     public EditTrackedItemDescriptorBuilder() {
         descriptor = new EditCommand.EditTrackedItemDescriptor();

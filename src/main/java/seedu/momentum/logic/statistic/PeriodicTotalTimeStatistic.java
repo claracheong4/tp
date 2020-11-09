@@ -24,7 +24,7 @@ import seedu.momentum.model.timer.WorkDuration;
 public class PeriodicTotalTimeStatistic extends Statistic {
 
     private StatisticTimeframe timeframe;
-    private ChronoUnit units;
+    private final ChronoUnit units;
 
     private ObservableList<StatisticEntry> timeList = FXCollections.observableArrayList();
 

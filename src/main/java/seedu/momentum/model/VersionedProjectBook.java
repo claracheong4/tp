@@ -18,7 +18,7 @@ public class VersionedProjectBook extends ProjectBook {
     private static final String REDO = "redo";
     private static final String COMMIT = "commit";
 
-    private List<ProjectBookWithUi> projectBookStateList;
+    private final List<ProjectBookWithUi> projectBookStateList;
     private int currentStatePointer;
 
     /**
@@ -99,8 +99,8 @@ public class VersionedProjectBook extends ProjectBook {
     private void flushRedoVersions() {
         int historySize = projectBookStateList.size();
         int nextPointer = currentStatePointer + 1;
-        for (int i = nextPointer; i < historySize; i++) {
-            projectBookStateList.remove(nextPointer);
+        if (historySize > nextPointer) {
+            projectBookStateList.subList(nextPointer, historySize).clear();
         }
     }
 

@@ -57,8 +57,6 @@ public class StatisticTimeframeSettings implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Timeframe : " + statTimeframe + "\n");
-        return sb.toString();
+        return "Timeframe : " + statTimeframe + "\n";
     }
 }

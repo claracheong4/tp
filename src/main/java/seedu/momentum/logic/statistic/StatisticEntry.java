@@ -10,8 +10,8 @@ import java.util.Objects;
  * Encapsulates a piece of statistics data.
  */
 public class StatisticEntry {
-    private String label;
-    private double value;
+    private final String label;
+    private final double value;
 
     /**
      * Constructs a {@code StatisticEntry}.
@@ -21,7 +21,6 @@ public class StatisticEntry {
      */
     public StatisticEntry(String label, double value) {
         requireNonNull(label);
-        requireNonNull(value);
         this.label = label;
         this.value = value;
     }

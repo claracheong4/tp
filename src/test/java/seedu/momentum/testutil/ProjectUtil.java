@@ -64,7 +64,7 @@ public class ProjectUtil {
 
     private static String getTagsString(Project project) {
         StringBuilder sb = new StringBuilder();
-        project.getTags().stream().forEach(s -> sb.append(PREFIX_TAG + s.tagName + " "));
+        project.getTags().forEach(s -> sb.append(PREFIX_TAG).append(s.tagName).append(" "));
         return sb.toString();
     }
 
@@ -100,12 +100,12 @@ public class ProjectUtil {
     public static String getProjectDetails(Project project) {
         StringBuilder sb = new StringBuilder();
 
-        sb.append(PREFIX_NAME + project.getName().fullName + " ");
+        sb.append(PREFIX_NAME).append(project.getName().fullName).append(" ");
 
-        sb.append(PREFIX_DESCRIPTION + project.getDescription().value + " ");
+        sb.append(PREFIX_DESCRIPTION).append(project.getDescription().value).append(" ");
 
         if (project.getCompletionStatus().isCompleted()) {
-            sb.append(PREFIX_COMPLETION_STATUS + " ");
+            sb.append(PREFIX_COMPLETION_STATUS).append(" ");
         }
 
         sb.append(getDeadlineString(project));

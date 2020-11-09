@@ -161,12 +161,11 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Gui window settings : " + guiWindowSettings);
-        sb.append("Gui theme settings : " + guiThemeSettings);
-        sb.append("Statistic timeframe settings : " + statisticTimeframeSettings);
-        sb.append("\nLocal data file location : " + projectBookFilePath);
-        return sb.toString();
+        String sb = "Gui window settings : " + guiWindowSettings
+                + "Gui theme settings : " + guiThemeSettings
+                + "Statistic timeframe settings : " + statisticTimeframeSettings
+                + "\nLocal data file location : " + projectBookFilePath;
+        return sb;
     }
 
 }

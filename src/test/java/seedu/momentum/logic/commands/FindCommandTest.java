@@ -38,8 +38,8 @@ public class FindCommandTest {
     private static final String TEST_DESCRIPTIONS = "starbucks elephants cats";
     private static final String TEST_TAGS = "friends owesMoney";
 
-    private Model model = new ModelManager(getTypicalProjectBook(), new UserPrefs());
-    private Model expectedModel = new ModelManager(getTypicalProjectBook(), new UserPrefs());
+    private final Model model = new ModelManager(getTypicalProjectBook(), new UserPrefs());
+    private final Model expectedModel = new ModelManager(getTypicalProjectBook(), new UserPrefs());
 
     @Test
     public void equals() {

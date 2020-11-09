@@ -11,7 +11,7 @@ import seedu.momentum.model.project.Project;
  */
 public class ProjectBookBuilder {
 
-    private ProjectBook projectBook;
+    private final ProjectBook projectBook;
 
     public ProjectBookBuilder() {
         projectBook = new ProjectBook();

@@ -17,8 +17,8 @@ import seedu.momentum.model.UserPrefs;
 public class StorageManager implements Storage {
 
     private static final Logger LOGGER = LogsCenter.getLogger(StorageManager.class);
-    private ProjectBookStorage projectBookStorage;
-    private UserPrefsStorage userPrefsStorage;
+    private final ProjectBookStorage projectBookStorage;
+    private final UserPrefsStorage userPrefsStorage;
 
     /**
      * Creates a {@code StorageManager} with the given {@code ProjectBookStorage} and {@code UserPrefStorage}.

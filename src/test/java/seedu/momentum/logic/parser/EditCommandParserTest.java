@@ -59,8 +59,8 @@ public class EditCommandParserTest {
     private static final String MESSAGE_INVALID_FORMAT =
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE);
 
-    private EditCommandParser parser = new EditCommandParser();
-    private Model model = new ModelManager(getTypicalProjectBook(), new UserPrefs());
+    private final EditCommandParser parser = new EditCommandParser();
+    private final Model model = new ModelManager(getTypicalProjectBook(), new UserPrefs());
 
     @Test
     public void parse_missingParts_failure() {
